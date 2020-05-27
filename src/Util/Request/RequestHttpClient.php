@@ -21,7 +21,7 @@ class RequestHttpClient implements RequestInterface
         $this->client = HttpClient::create();
     }
 
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): void
     {
         $this->headers = $headers;
     }

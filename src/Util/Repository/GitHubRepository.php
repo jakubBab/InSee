@@ -49,19 +49,19 @@ class GitHubRepository extends AbstractRepository
         return $content['sha'];
     }
 
-    private function buildUrl($resource)
+    private function buildUrl($resource): string
     {
         $resource = sprintf($resource, $this->getOwner(), $this->getBranchName());
 
         return sprintf('%s%s', $this->host, $resource);
     }
 
-    private function getHeaders()
+    private function getHeaders(): array
     {
         return $this->headers;
     }
 
-    private function getCommits()
+    private function getCommits(): string
     {
         return $this->commits;
     }

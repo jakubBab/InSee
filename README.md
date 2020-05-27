@@ -9,7 +9,7 @@ composer install
 ```
 
 
-###How it works
+### How it works
 
 Run in the root folder
 
@@ -17,7 +17,7 @@ Run in the root folder
 bin/console app:repository-sha owner/repo branch [--service=github|other]
 ```
 
-###Tests done
+### Tests done
 Tests have been done on: 
 
 ```

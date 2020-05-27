@@ -18,7 +18,7 @@ class GitHubRepository extends AbstractRepository
         'Accept' => 'application/vnd.github.v3+json',
     ];
 
-    private $commits = '/repos/lexik/LexikJWTAuthenticationBundle/commits/master';
+    private $commits = '/repos/%s/commits/%s';
 
     private $isSuccess = false;
 
@@ -51,6 +51,8 @@ class GitHubRepository extends AbstractRepository
 
     private function buildUrl($resource)
     {
+        $resource = sprintf($resource, $this->getOwner(), $this->getBranchName());
+
         return sprintf('%s%s', $this->host, $resource);
     }
 

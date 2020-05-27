@@ -16,7 +16,7 @@ interface RepositoryInterface
 
     public function getName();
 
-    public function getRepositoryName();
+    public function getBranchName();
 
-    public function setRepositoryName($repositoryName);
+    public function setBranchName($repositoryName);
 }

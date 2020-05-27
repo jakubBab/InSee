@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Util\Request;
 
 use App\Util\Request\Contract\RequestInterface;
-use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Response;
 
 class RequestHttpClient implements RequestInterface
 {
@@ -31,10 +31,14 @@ class RequestHttpClient implements RequestInterface
         $headers = !empty($headers) ? ['headers' => $this->headers] : [];
 
         try {
-            $this->content = $this->client->request($method, $url, $headers);
-        } catch (TransportException $exception) {
+            $response = $this->client->request($method, $url, $headers);
+            if (Response::HTTP_OK !== $response->getStatusCode()) {
+                return false;
+            }
+        } catch (\Exception $exception) {
             return false;
         }
+        $this->content = $response;
 
         return true;
     }

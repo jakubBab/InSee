@@ -10,7 +10,7 @@ abstract class AbstractRepository implements RepositoryInterface
 
     protected $owner;
 
-    protected $repositoryName;
+    private $branchName;
 
     abstract public function getCommit();
 
@@ -31,13 +31,13 @@ abstract class AbstractRepository implements RepositoryInterface
         return $this->name;
     }
 
-    public function getRepositoryName(): string
+    public function getBranchName()
     {
-        return $this->repositoryName;
+        return $this->branchName;
     }
 
-    public function setRepositoryName($repositoryName): void
+    public function setBranchName($branchName)
     {
-        $this->repositoryName = $repositoryName;
+        $this->branchName = $branchName;
     }
 }

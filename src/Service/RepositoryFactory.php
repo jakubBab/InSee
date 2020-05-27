@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Services;
+namespace App\Service;
 
 use App\Util\Repository\Contract\RepositoryInterface;
 
@@ -10,6 +10,10 @@ class RepositoryFactory
 {
     /** @var RepositoryInterface[] */
     private $repositoriesStorage = [];
+
+    private $owner;
+
+    private $branchName;
 
     public function __construct(RepositoryInterface $gitHubRepository)
     {
@@ -29,6 +33,20 @@ class RepositoryFactory
 
     public function getRepositoryByName(string $repoName): RepositoryInterface
     {
+        $repository = $this->repositoriesStorage[$repoName];
+        $repository->setOwner($this->owner);
+        $repository->setBranchName($this->branchName);
+
         return $this->repositoriesStorage[$repoName];
+    }
+
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    }
+
+    public function setBranchName($branchName)
+    {
+        $this->branchName = $branchName;
     }
 }

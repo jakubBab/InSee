@@ -46,12 +46,12 @@ class RepositoryCommandFacade
         return !empty($this->requestValidatorService->getErrorMessages());
     }
 
-    public function setInput(InputInterface $input)
+    public function setInput(InputInterface $input): void
     {
         $this->input = $input;
     }
 
-    public function setOutput(OutputInterface $output)
+    public function setOutput(OutputInterface $output): void
     {
         $this->output = $output;
     }
@@ -65,7 +65,7 @@ class RepositoryCommandFacade
         return $arguments;
     }
 
-    public function renderFailedTable($errors = [])
+    public function renderFailedTable($errors = []): void
     {
         $this->addLineBreak();
         $errorMessages = empty($errors) ? $this->requestValidatorService->getErrorMessages() : $errors;
@@ -78,7 +78,7 @@ class RepositoryCommandFacade
         $consoleOutputTable->render();
     }
 
-    public function process()
+    public function process(): bool
     {
         $values = $this->getArgumentsAndOptions();
         $this->repositoryFactory->setOwner($values[RepositoryShaProviderCommand::OWNER_REPO]);
@@ -88,14 +88,14 @@ class RepositoryCommandFacade
         return !empty($this->repository->getCommit());
     }
 
-    public function isServiceRequestedAvailable()
+    public function isServiceRequestedAvailable(): bool
     {
         $values = $this->getArgumentsAndOptions();
 
         return $this->repositoryFactory->isAvailable($values[RepositoryShaProviderCommand::SERVICE]);
     }
 
-    public function renderOutputTable()
+    public function renderOutputTable(): void
     {
         $values = $this->getArgumentsAndOptions();
 
@@ -111,7 +111,7 @@ class RepositoryCommandFacade
         $consoleOutputTable->render();
     }
 
-    public function addLineBreak()
+    public function addLineBreak(): void
     {
         $this->output->writeln([
             '',

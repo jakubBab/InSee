@@ -18,14 +18,14 @@ class ConsoleOutputTable extends Table
         'owner/repo', 'branch', 'service', 'sha',
     ];
 
-    public function setTableData(string $owner, string $branch, string $service, string $sha)
+    public function setTableData(string $owner, string $branch, string $service, string $sha): void
     {
         $this->setRows([
             [$owner, $branch, $service, $sha],
         ]);
     }
 
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): object
     {
         $headers = !empty($headers) ? $headers : $this->header;
 

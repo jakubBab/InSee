@@ -18,14 +18,14 @@ class ErrorConsoleOutputTable extends Table
         parent::__construct($output);
     }
 
-    public function setTableData(array $errors)
+    public function setTableData(array $errors): void
     {
         $this->setRows([
             $errors,
         ]);
     }
 
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): object
     {
         $headers = !empty($headers) ? $headers : $this->header;
 

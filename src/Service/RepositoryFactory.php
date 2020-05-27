@@ -20,7 +20,7 @@ class RepositoryFactory
         $this->repositoriesStorage[$gitHubRepository->getName()] = $gitHubRepository;
     }
 
-    public function isAvailable(string $repoName)
+    public function isAvailable(string $repoName): bool
     {
         foreach ($this->repositoriesStorage as $repository) {
             if ($repoName == $repository->getName()) {
@@ -40,12 +40,12 @@ class RepositoryFactory
         return $this->repositoriesStorage[$repoName];
     }
 
-    public function setOwner($owner)
+    public function setOwner($owner): void
     {
         $this->owner = $owner;
     }
 
-    public function setBranchName($branchName)
+    public function setBranchName($branchName): void
     {
         $this->branchName = $branchName;
     }

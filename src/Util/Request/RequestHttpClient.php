@@ -28,7 +28,7 @@ class RequestHttpClient implements RequestInterface
 
     public function call(string $method, $url): bool
     {
-        $headers = !empty($headers) ? ['headers' => $this->headers] : [];
+        $headers = !empty($this->headers) ? ['headers' => $this->headers] : [];
 
         try {
             $response = $this->client->request($method, $url, $headers);

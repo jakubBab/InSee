@@ -12,7 +12,6 @@ class RequestValidatorService
 {
     private $constraints;
 
-    /** @var array */
     private $dataToValidate;
 
     private $errors = [];

@@ -7,6 +7,7 @@ namespace App\Service;
 use App\Command\RepositoryShaProviderCommand;
 use App\Util\ConsoleOutputTable;
 use App\Util\ErrorConsoleOutputTable;
+use App\Util\Repository\Contract\RepositoryInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -14,9 +15,6 @@ class RepositoryCommandFacade
 {
     /** @var OutputInterface */
     private $output;
-
-    /** @var InputInterface */
-    private $setInput;
 
     /** @var RepositoryFactory */
     private $repositoryFactory;
@@ -27,7 +25,7 @@ class RepositoryCommandFacade
     /** @var InputInterface */
     private $input;
 
-    /** @var \App\Util\Repository\Contract\RepositoryInterface */
+    /** @var RepositoryInterface */
     private $repository;
 
     public function __construct(

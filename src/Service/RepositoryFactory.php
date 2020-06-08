@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Util\Repository\Contract\RepositoryInterface;
+use App\Util\Repository\RepositoryAggregateStorage;
 
 class RepositoryFactory
 {
@@ -15,9 +16,9 @@ class RepositoryFactory
 
     private $branchName;
 
-    public function __construct(RepositoryInterface $gitHubRepository)
+    public function __construct(RepositoryAggregateStorage $repositoryAggregateStorage)
     {
-        $this->repositoriesStorage[$gitHubRepository->getName()] = $gitHubRepository;
+        $this->repositoriesStorage = $repositoryAggregateStorage->getRepositories();
     }
 
     public function isAvailable(string $repoName): bool
